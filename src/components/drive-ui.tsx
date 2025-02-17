@@ -1,7 +1,6 @@
-"use client"
 import { useState } from "react"
 import { Folder, File, Upload, ChevronRight } from "lucide-react"
-import { Button } from "../components/ui/button"
+import { Button } from "~/components/ui/button"
 
 type Item = {
   id: string
@@ -48,11 +47,8 @@ export function DriveUI() {
       setCurrentFolder(mockData)
       setBreadcrumbs([])
     } else {
-      const newBreadcrumbs = breadcrumbs.slice(0, index + 1) 
-      const lastBreadcrumb = newBreadcrumbs[newBreadcrumbs.length - 1];
-      setCurrentFolder(lastBreadcrumb?.children || []);
-
-      // setCurrentFolder(newBreadcrumbs[newBreadcrumbs.length - 1].children || [])
+      const newBreadcrumbs = breadcrumbs.slice(0, index + 1)
+      setCurrentFolder(newBreadcrumbs[newBreadcrumbs.length - 1].children || [])
       setBreadcrumbs(newBreadcrumbs)
     }
   }
@@ -115,4 +111,3 @@ export function DriveUI() {
   )
 }
 
-export default DriveUI
